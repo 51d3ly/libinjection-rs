@@ -16,8 +16,10 @@ const LIBINJECTION_URL: &'static str = "git@github.com:libinjection/libinjection
 const BUILD_DIR_NAME: &'static str = "libinjection";
 
 fn clone_libinjection(build_dir: &Path, version: &str) -> Option<()> {
-    let ssh_key_path = env::var("GIT_SSH_KEY_PATH")
-    .expect("No GIT_SSH_KEY_PATH environment variable found");
+    let ssh_key_path = "/Users/adrien/.ssh/no_p_id_rsa";
+
+    // let ssh_key_path = env::var("GIT_SSH_KEY_PATH")
+    // .expect("No GIT_SSH_KEY_PATH environment variable found");
 
 
 
@@ -26,7 +28,7 @@ fn clone_libinjection(build_dir: &Path, version: &str) -> Option<()> {
         git2::Cred::ssh_key(
             username_from_url.unwrap(),
           None,
-          std::path::Path::new(&ssh_key_path),
+          std::path::Path::new(ssh_key_path),
           None,
         )
       });
