@@ -9,14 +9,17 @@ use std::fs::remove_dir_all;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
-const LIBINJECTION_URL: &'static str = "git@github.com:libinjection/libinjection.git";
+// const LIBINJECTION_URL: &'static str = "git@github.com:libinjection/libinjection.git";
 // const LIBINJECTION_URL: &'static str = "https://github.com/client9/libinjection";
+
+
+const LIBINJECTION_URL: &'static str = "http://github.com/libinjection/libinjection";
 
 // https://github.com/libinjection/libinjection.git
 const BUILD_DIR_NAME: &'static str = "libinjection";
 
 fn clone_libinjection(build_dir: &Path, version: &str) -> Option<()> {
-    let ssh_key_path = "/Users/adrien/.ssh/no_p_id_rsa";
+    // let ssh_key_path = "/Users/adrien/.ssh/no_p_id_rsa";
 
     // let ssh_key_path = env::var("GIT_SSH_KEY_PATH")
     // .expect("No GIT_SSH_KEY_PATH environment variable found");
@@ -24,14 +27,14 @@ fn clone_libinjection(build_dir: &Path, version: &str) -> Option<()> {
 
 
     let mut callbacks = git2::RemoteCallbacks::new();
-    callbacks.credentials(|_url, username_from_url, _allowed_types| {
-        git2::Cred::ssh_key(
-            username_from_url.unwrap(),
-          None,
-          std::path::Path::new(ssh_key_path),
-          None,
-        )
-      });
+    // callbacks.credentials(|_url, username_from_url, _allowed_types| {
+    //     git2::Cred::ssh_key(
+    //         username_from_url.unwrap(),
+    //       None,
+    //       std::path::Path::new(ssh_key_path),
+    //       None,
+    //     )
+    //   });
     
     let mut opts = git2::FetchOptions::new();
     opts.remote_callbacks(callbacks);
