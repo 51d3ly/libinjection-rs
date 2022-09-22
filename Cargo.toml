@@ -17,5 +17,5 @@ travis-ci = { repository = "arvancloud/libinjection-rs" }
 
 [build-dependencies]
 bindgen = "0.54"
-git2 = "0.13"
+git2 = "0.15"
 regex = "1.3"
